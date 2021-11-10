@@ -15,27 +15,28 @@ class ObsTemperatureSensorResource(resource.ObservableResource):
         super().__init__()
         self.temperature_sensor = TemperatureSensor()
         self.handle = None
-        self.reschedule()
+        self.schedule_measurement()
 
     def notify(self):
-        print("Notifying observers ...")
+        print("\n##################################\nUpdate Status & Notify Observers ...")
         self.updated_state()
-        self.reschedule()
+        self.schedule_measurement()
+        print("##################################")
 
-    def reschedule(self):
+    def schedule_measurement(self):
         print("Reading updated temperature value ...")
         self.temperature_sensor.measure_temperature()
         print("Updated Temperature Value: %f" % self.temperature_sensor.temperature_value)
         self.handle = asyncio.get_event_loop().call_later(5, self.notify)
 
-    def update_observation_count(self, count):
-        if count and self.handle is None:
-            print("Starting the clock")
-            self.reschedule()
-        if count == 0 and self.handle:
-            print("Stopping the clock")
-            self.handle.cancel()
-            self.handle = None
+    # def update_observation_count(self, count):
+    #     if count and self.handle is None:
+    #         print("Starting the clock")
+    #         self.reschedule()
+    #     if count == 0 and self.handle:
+    #         print("Stopping the clock")
+    #         self.handle.cancel()
+    #         self.handle = None
 
     async def render_get(self, request):
         print("GET Request Received ...")
