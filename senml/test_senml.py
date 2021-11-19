@@ -1,6 +1,7 @@
 from kpn_senml import *
 import time
 import datetime
+import json
 
 def main():
     pack = SenmlPack("device_name")
@@ -19,6 +20,11 @@ def main():
     temp.time = time.mktime(datetime.datetime.now().timetuple())  # all child objects will receive the time value
 
     print(pack.to_json())
+
+    # Test of de-serialization
+    # string_test = '[{"n": "temperature", "v": 18.5, "t": 122547872.0, "u": "Cel", "bn": "device_name", "bv": 5, "bs": 50, "bt": 1514809980.0}, {"n": "doorPos", "vb": true, "ut": -1514809960.0}, {"n": "int_val", "s": 50}]'
+    # pack_2 = SenmlPack("device_name")
+    # pack_2.from_json(string_test)
 
 
 if __name__ == "__main__":
