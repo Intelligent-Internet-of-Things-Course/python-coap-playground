@@ -10,7 +10,8 @@ async def main():
     protocol = await Context.create_client_context()
 
     # request = Message(code=aiocoap.GET, uri='coap://127.0.0.1:5683/demo')
-    request = Message(code=aiocoap.GET, uri='coap://127.0.0.1:5683/temperature')
+    # request = Message(code=aiocoap.GET, uri='coap://127.0.0.1:5683/temperature')
+    request = Message(code=aiocoap.GET, uri='coap://127.0.0.1:5683/switch')
 
     try:
         response = await protocol.request(request).response

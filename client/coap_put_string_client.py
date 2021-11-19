@@ -9,8 +9,11 @@ logging.basicConfig(level=logging.INFO)
 async def main():
     protocol = await Context.create_client_context()
 
-    request = Message(code=aiocoap.PUT, uri='coap://127.0.0.1:5683/demo')
-    request.payload = 'demo_string'.encode("utf-8")
+    # request = Message(code=aiocoap.PUT, uri='coap://127.0.0.1:5683/demo')
+    # request.payload = 'demo_string'.encode("utf-8")
+
+    request = Message(code=aiocoap.PUT, uri='coap://127.0.0.1:5683/switch')
+    request.payload = 'false'.encode("utf-8")
 
     try:
         response = await protocol.request(request).response
