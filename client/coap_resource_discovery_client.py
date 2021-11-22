@@ -20,6 +20,7 @@ async def main():
         print(e)
     else:
         response_string = response.payload.decode("utf-8")
+        print(response_string)
         links_headers = link_header.parse(response_string)
         for link in links_headers.links:
             print('Href: %s\nAttributes: %s' % (link.href, link.attr_pairs))
