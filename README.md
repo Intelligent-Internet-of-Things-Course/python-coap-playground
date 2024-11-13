@@ -14,3 +14,16 @@ Reference Library: AioCoAP - https://github.com/chrysn/aiocoap
 
 - Import LinkHeader module to enable aiocoap to work with WebLinking -> pip install LinkHeader
 - Import kpn-senml (https://github.com/kpn-iot/senml-python-library) to work with SenML data format for in Json and CBOR -> pip install kpn-senml
+
+# Dependencies Installation
+
+```bash
+pip install aiocoap==0.4.7
+pip install LinkHeader==0.4.3
+```
+
+or you can use the requirements.txt file to install all the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
