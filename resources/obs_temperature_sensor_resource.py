@@ -8,7 +8,7 @@ from model.temperature_sensor import TemperatureSensor
 
 class ObsTemperatureSensorResource(resource.ObservableResource):
     """Example resource that can be observed. The `notify` method keeps
-    scheduling itself, and calles `update_state` to trigger sending
+    scheduling itself, and call `update_state` to trigger sending
     notifications."""
 
     def __init__(self):
